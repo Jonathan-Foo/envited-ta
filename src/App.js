@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Routes, Route} from 'react-router-dom';
+import Home from "./pages/Home";
+import Event from "./pages/Event";
+import Create from "./pages/Create";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/create' element={<Create />}/>
+          <Route path='/event' element={<Event />}/>
+        </Routes>
+      </LocalizationProvider>
+    </>
   );
 }
 
